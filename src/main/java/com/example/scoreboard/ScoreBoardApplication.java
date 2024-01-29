@@ -21,6 +21,7 @@ public class ScoreBoardApplication  implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        System.out.println("Application started");
         var command = 0;
         while (command != 5) {
             printMenu();
@@ -29,12 +30,12 @@ public class ScoreBoardApplication  implements CommandLineRunner {
                 command = Integer.parseInt(scanner.next());
             }
             catch (NumberFormatException e){
-                System.out.println("Command not found, try again..");
+                System.out.println("undefined command, try again..");
                 continue;
             }
 
             if (command > 5){
-                System.out.println("Command not found, try again..");
+                System.out.println("undefined command, try again..");
                 continue;
             }
 
@@ -55,7 +56,9 @@ public class ScoreBoardApplication  implements CommandLineRunner {
                     gamesManager.getSummaryOfGamesByTotalScore();
                 }
             }
+            System.out.println("\n\n");
         }
+        System.out.println("Closing application..");
         scanner.close();
     }
 

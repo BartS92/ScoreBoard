@@ -1,21 +1,20 @@
 package com.example.scoreboard.service;
 
-
 import com.example.scoreboard.domain.Game;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-@Setter
-@Getter
-public abstract class GameService {
-
+@Service
+@RequiredArgsConstructor
+public class GameService {
     private Game game;
-    public void start() {
+    public void update() {
+        var homeTeam = game.getHome();
+        var awayTeam = game.getAway();
 
-    }
-
-    public abstract void update();
-    public void finish() {
-
+        var homeScore = GameUtils.generateScore(homeTeam.getScore());
+        var awayScore = GameUtils.generateScore(awayTeam.getScore());
+        homeTeam.setScore(homeScore);
+        awayTeam.setScore(awayScore);
     }
 }
