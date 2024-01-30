@@ -1,4 +1,4 @@
-package com.example.scoreboard.service;
+package com.example.scoreboard.service.game;
 
 import java.util.Random;
 
