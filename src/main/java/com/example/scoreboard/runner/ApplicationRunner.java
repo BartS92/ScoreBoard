@@ -82,7 +82,7 @@ public class ApplicationRunner implements CommandLineRunner {
     private String readTeam() {
         var team = scanner.next();
         while (gamesManager.teamExists(team)) {
-            team = scanner.next();
+            team = scanner.nextLine();
         }
 
         return team;
