@@ -22,7 +22,7 @@ You need to choose option by enter the appropriate number + ENTER
 
 ![img_2.png](img_2.png)
 ### 3. Update Score
-**Choose the game wh3ich should be updated**
+**Choose the game which should be updated**
 
 ![img_4.png](img_4.png)
 
