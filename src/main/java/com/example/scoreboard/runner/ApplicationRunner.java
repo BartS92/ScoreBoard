@@ -22,7 +22,6 @@ public class ApplicationRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        scanner.useDelimiter("\\n");
         System.out.println("Application started");
         var command = 0;
         while (command != 5) {
@@ -81,7 +80,7 @@ public class ApplicationRunner implements CommandLineRunner {
     }
 
     private String readTeam() {
-        var team = scanner.next();
+        var team = scanner.nextLine();
         while (gamesManager.teamExists(team)) {
             team = scanner.nextLine();
         }
