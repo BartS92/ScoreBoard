@@ -3,7 +3,7 @@ package com.example.scoreboard.service.game;
 import com.example.scoreboard.domain.Game;
 import java.util.List;
 
-public interface GamesManager extends AutoCloseable {
+public interface GamesManager {
     void startGame(String home, String away);
 
     void finishGame(int gameIdx);
@@ -15,4 +15,5 @@ public interface GamesManager extends AutoCloseable {
     boolean teamExists (String team);
 
     List<Game> getGames();
+
 }

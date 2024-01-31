@@ -1,4 +1,4 @@
-package com.example.scoreboard.service.printer;
+package com.example.scoreboard.printer;
 
 import com.example.scoreboard.domain.Game;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.scoreboard.service.printer;
+package com.example.scoreboard.printer;
 
 import com.example.scoreboard.domain.Game;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ConsolePrinter implements Printer{
+public class ConsolePrinter implements Printer {
     @Override
     public void printGames(List<Game> games, boolean backOption) {
         IntStream.range(0, games.size()).forEach(idx -> {

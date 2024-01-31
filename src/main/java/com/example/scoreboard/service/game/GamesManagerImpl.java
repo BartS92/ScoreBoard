@@ -42,9 +42,9 @@ public class GamesManagerImpl implements GamesManager {
     }
 
 
-
     public List<Game> getSummaryOfGamesByTotalScore() {
         var sorted = new ArrayList<Game>(games);
+        Collections.reverse(sorted);
         Collections.sort(sorted);
         return sorted;
     }
@@ -61,12 +61,4 @@ public class GamesManagerImpl implements GamesManager {
     public List<Game> getGames() {
         return games;
     }
-
-
-    @Override
-    public void close() throws Exception {
-        scanner.close();
-    }
-
-
 }

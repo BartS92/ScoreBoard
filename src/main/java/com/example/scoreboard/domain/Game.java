@@ -18,6 +18,6 @@ public class Game implements Comparable<Game> {
 
     @Override
     public int compareTo(Game o) {
-        return home.getScore() + away.getScore() - o.getHome().getScore() - o.getAway().getScore();
+        return o.getHome().getScore() + o.getAway().getScore() - home.getScore() - away.getScore();
     }
 }
