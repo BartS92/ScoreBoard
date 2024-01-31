@@ -28,6 +28,7 @@ class GamesManagerTest {
     @BeforeEach
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
+        testObj.clear();
     }
 
     @Test
@@ -38,7 +39,6 @@ class GamesManagerTest {
 
         // then
         testObj.startGame(home, away);
-
 
         assertEquals(1, testObj.getGames().size());
         var game = testObj.getGames().get(0);
@@ -71,13 +71,13 @@ class GamesManagerTest {
         String away = "Team 2";
         testObj.startGame(home, away);
 
+
         assertEquals(1, testObj.getGames().size());
-        var info = testObj.getGames().get(0);
-        assertEquals("%d. %s - %s: %d - %d", info);
 
         // then
         testObj.updateScore(0);
-        assertNotEquals("%d. %s - %s: %d - %d", testObj.getGames().get(0));
+        var game  = testObj.getGames().get(0);
+        assertNotEquals(0, game.getAway().getScore() + game.getHome().getScore());
     }
 
     @Test
@@ -101,6 +101,16 @@ class GamesManagerTest {
             {add(game2);}
             {add(game1);}
         }, sorted);
+    }
 
+    @Test
+    void teamExists_whenTeamPlaying_thenReturnedTrue() {
+        // when
+        var home = "Team 3";
+        var away = "Team 4";
+        testObj.startGame(home, away);
+
+        //then
+        assertTrue(testObj.teamExists("Team 3"));
     }
 }

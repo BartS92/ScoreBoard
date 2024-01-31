@@ -4,14 +4,12 @@ import com.example.scoreboard.domain.Game;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GamesManagerImpl implements GamesManager {
 
     private List<Game> games = new ArrayList<>();
-    private final Scanner scanner = new Scanner(System.in);
 
 
     public  void startGame(String home, String away) {
@@ -60,5 +58,10 @@ public class GamesManagerImpl implements GamesManager {
     @Override
     public List<Game> getGames() {
         return games;
+    }
+
+    @Override
+    public void clear() {
+        games.clear();
     }
 }

@@ -26,7 +26,6 @@ public class ApplicationRunner implements CommandLineRunner {
         var command = 0;
         while (command != 5) {
             printer.printMenu();
-
             command = readCommand();
 
             if (command > 5 || command < 1) {
@@ -60,24 +59,23 @@ public class ApplicationRunner implements CommandLineRunner {
     private void readTeamsAndStartGameCommand() {
         String home = "";
         String away = "";
-        while (away.isEmpty() || home.isEmpty() || away.equalsIgnoreCase(home)) {
-            System.out.println("Write a name of the a home team");
-            home = readTeam();
+        System.out.println("Write a name of the a home team");
+        home = readTeam("");
 
-            System.out.println("Write a name of the a away team");
-            away = readTeam();
-            if (away.equalsIgnoreCase(home)) {
-                System.out.println("Teams names should be different, try again");
-            }
-        }
+        System.out.println("Write a name of the a away team");
+        away = readTeam(home);
 
         gamesManager.startGame(home, away);
     }
 
-    private String readTeam() {
-        var team = scanner.nextLine();
-        while (gamesManager.teamExists(team)) {
+    private String readTeam(String rivalTeam) {
+        var team = "";
+        while (gamesManager.teamExists(team) || team.isEmpty()) {
             team = scanner.nextLine();
+            if (!rivalTeam.isEmpty() && team.equalsIgnoreCase(rivalTeam)){
+                System.out.println(rivalTeam+" is already playing, write another name");
+                team = "";
+            }
         }
 
         return team;
