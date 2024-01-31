@@ -22,6 +22,7 @@ public class ApplicationRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        scanner.useDelimiter("\\n");
         System.out.println("Application started");
         var command = 0;
         while (command != 5) {
