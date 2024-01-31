@@ -27,12 +27,7 @@ public class ApplicationRunner implements CommandLineRunner {
         while (command != 5) {
             printer.printMenu();
 
-            try {
-                command = Integer.parseInt(scanner.next());
-            } catch (NumberFormatException e) {
-                System.out.println("undefined command, try again..");
-                continue;
-            }
+            command = readCommand();
 
             if (command > 5 || command < 1) {
                 System.out.println("undefined command, try again..");
@@ -56,7 +51,7 @@ public class ApplicationRunner implements CommandLineRunner {
                     printSummaryOfGamesByTotalScore();
                 }
             }
-            System.out.println("\n\n");
+            System.out.println("\n");
         }
         System.out.println("Closing application..");
         scanner.close();
@@ -94,8 +89,8 @@ public class ApplicationRunner implements CommandLineRunner {
         printer.printGames(games, true);
 
         while (true) {
-            var gameIdx = scanner.nextInt();
-            if (gameIdx > games.size() + 1) {
+            var gameIdx = readCommand();
+            if (gameIdx > games.size() + 1 || gameIdx <= 0) {
                 System.out.println("undefined command!");
             } else {
                 if (gameIdx < games.size() + 1) {
@@ -112,11 +107,11 @@ public class ApplicationRunner implements CommandLineRunner {
         printer.printGames(games, true);
 
         while (true) {
-            var gameIdx = scanner.nextInt();
+            var gameIdx = readCommand();
             if (gameIdx == games.size() + 1) {
                 break;
             }
-            if (gameIdx > games.size() + 1) {
+            if (gameIdx > games.size() + 1 ||  gameIdx <= 0) {
                 System.out.println("undefined command!");
             } else {
                 if (gameIdx < games.size() + 1) {
@@ -125,6 +120,20 @@ public class ApplicationRunner implements CommandLineRunner {
                 break;
             }
         }
+    }
+
+    private int readCommand() {
+        int idx  = -1;
+        while (true){
+            try {
+                idx = Integer.parseInt(scanner.nextLine());
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println("undefined command, try again..");
+            }
+        }
+
+        return idx;
     }
 
     private void printSummaryOfGamesByTotalScore() {
